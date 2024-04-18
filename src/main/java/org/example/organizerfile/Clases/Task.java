@@ -1,7 +1,7 @@
 package org.example.organizerfile.Clases;
 
 public class Task<T extends HiloAbst> extends javafx.concurrent.Task<Void> {
-
+    //clase engargada de ejecutar los hilos
     private T copiarHilos;
 
     public Task(T copiarHilos) {
