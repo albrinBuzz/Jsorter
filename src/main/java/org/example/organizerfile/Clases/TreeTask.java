@@ -25,6 +25,8 @@ public class TreeTask extends HiloAbst {
             File[] files = directory.listFiles();
             if (files != null) {
                 for (File file : files) {
+                    //cuenta los archivos de manera recursiva, por cada archivo. para poder 
+                    //llegar a todos los niveles de profundidad
                     count += countFiles(file);
                 }
             }
