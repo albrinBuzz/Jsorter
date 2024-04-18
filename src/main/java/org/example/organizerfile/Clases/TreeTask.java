@@ -18,6 +18,7 @@ public class TreeTask extends HiloAbst {
         this.controller = controller;
     }
     private double countFiles(File directory) {
+        //revisar la complegidad temporal
         if (directory.isFile()) {
             return 1;
         } else {
