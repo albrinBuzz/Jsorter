@@ -45,6 +45,7 @@ public class TreeTask extends HiloAbst {
             }
         }
         // Agregar el nodo actual como hijo del nodo padre
+        //lo hace de manera recursiva por cada nodo del padre
         parentItem.getChildren().add(rootItem);
     }
 
