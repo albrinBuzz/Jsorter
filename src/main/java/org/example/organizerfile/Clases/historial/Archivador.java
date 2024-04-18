@@ -74,7 +74,6 @@ public class Archivador {
     }
     public void verHistorial(){
         deserializar();
-        //System.out.println(carpetas.get("/home/cris/down").getArchivos());
         for (Map.Entry<String, Folder> entry : carpetas.entrySet()) {
             String key=entry.getKey();
             String value= String.valueOf(entry.getValue().getArchivos());
