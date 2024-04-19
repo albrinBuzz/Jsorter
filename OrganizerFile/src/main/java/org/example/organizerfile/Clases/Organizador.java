@@ -160,7 +160,7 @@ public class Organizador extends HiloAbst{
     private void reorganizar(File root,int num) throws Exception {
         // Este método reorganiza los archivos dentro del directorio raíz según el número de operación dado.
         // El número de operación se utiliza para determinar la lógica de reorganización de los archivos.
-        // Por ejemplo, el valor 1 podría significar reorganizar por fecha, el valor 2 por tamaño, etc.
+        // Por ejemplo, el valor 1 podría significar reorganizar por tipo, el valor 2 por cusmtom, etc.
 
         // Se obtienen todos los archivos dentro del directorio raíz.
         File[]files=root.listFiles();
