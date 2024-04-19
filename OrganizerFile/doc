@@ -1,0 +1,2 @@
+clase Organizador:
+    Constructor Organizador(Archivador, Archivos, String): Constructor utilizado para inicializar un objeto Organizador con un Archivador, Archivos y una clave String.
