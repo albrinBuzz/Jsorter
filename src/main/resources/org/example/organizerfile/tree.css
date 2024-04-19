@@ -1,6 +1,0 @@
-/* styles.css */
-
-.tree-view .tree-cell {
-    -fx-background-color: #4974a5; /* Color de fondo oscuro para las celdas del árbol */
-    -fx-text-fill: #FFFFFF; /* Color de texto claro para las celdas del árbol */
-}
