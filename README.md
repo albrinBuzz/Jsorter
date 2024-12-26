@@ -8,10 +8,6 @@
 
 - **Organización por Extensión**: Organiza archivos según su tipo de extensión (por ejemplo, imágenes, documentos, música, etc.).
 - **Organización Personalizada**: Permite combinar múltiples criterios de organización, como tipo, fecha, tamaño y nombre de archivo.
-- **Soporte para Archivos Multimedia**: Organiza imágenes, videos y música basados en metadatos como fecha EXIF, fecha de grabación y metadatos ID3.
-- **Automatización de Procesos**: Configura tareas automáticas para organizar archivos en intervalos específicos o cuando se detecta un archivo nuevo.
-- **Interfaz Gráfica de Usuario (GUI)**: Ofrece una interfaz fácil de usar para previsualizar y gestionar los archivos antes de organizarlos.
-- **Detección de Archivos Duplicados**: La aplicación detecta archivos duplicados y te permite gestionar su eliminación o archivo en una carpeta específica.
 
 ## Requisitos
 
