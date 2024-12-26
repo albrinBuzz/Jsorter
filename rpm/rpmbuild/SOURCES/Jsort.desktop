@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name= Jsort
+Comment=Breve descripción de tu aplicación
+Exec= java -jar /opt/Jsort/Jsort.jar
+Icon= /usr/share/icons/hicolor/48x48/apps/Jsort.png
+Terminal=false
+Categories=Utility

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="66ec3e3d-7945-4f9d-941e-4afaa018c32d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/OrganizerFile_jar/OrganizerFile.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/OrganizerFile_jar/datos.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/OrganizerFile_jar/historial.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/organizerfile/Clases/Archivos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/organizerfile/Clases/HiloAbst.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/organizerfile/Clases/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/organizerfile/Clases/Organizador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/organizerfile/Clases/Task.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/organizerfile/Clases/TreeTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/organizerfile/Clases/historial/Archivador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/organizerfile/Clases/historial/Folder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/organizerfile/HelloApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/organizerfile/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/organizerfile/Help.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/organizerfile/HelpController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/organizerfile/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/organizerfile/help.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/organizerfile/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/organizerfile/tree.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/organizerfile/Clases/Archivos.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/organizerfile/Clases/HiloAbst.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/organizerfile/Clases/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/organizerfile/Clases/Organizador.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/organizerfile/Clases/Task.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/organizerfile/Clases/TreeTask.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/organizerfile/Clases/historial/Archivador.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/organizerfile/Clases/historial/Folder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/organizerfile/HelloApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/organizerfile/HelloController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/organizerfile/Help.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/organizerfile/HelpController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/organizerfile/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/organizerfile/help.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/organizerfile/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/organizerfile/tree.css" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="2qjmkjUlteDHPIc9Dys1HiKiOdk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/cris/java/javafx/proyectos/Completados/Jsorter/OrganizerFile"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="66ec3e3d-7945-4f9d-941e-4afaa018c32d" name="Changes" comment="" />
+      <created>1735184504054</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1735184504054</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,24 @@
+Folder{/home/cris/pruebaChica
+organizada=true
+, organizacion='Type
+, archivos=[/home/cris/pruebaChica/text, /home/cris/pruebaChica/presentation, /home/cris/pruebaChica/sourceCode, /home/cris/pruebaChica/video, /home/cris/pruebaChica/config, /home/cris/pruebaChica/audio, /home/cris/pruebaChica/spreadsheet, /home/cris/pruebaChica/image, /home/cris/pruebaChica/document, /home/cris/pruebaChica/compressed, /home/cris/pruebaChica/executable]}
+Organizada el Thu Dec 26 00:46:51 CLST 2024
+-------------------
+Folder{/home/cris/pruebaChica
+organizada=true
+, organizacion='Type
+, archivos=[/home/cris/pruebaChica/text, /home/cris/pruebaChica/presentation, /home/cris/pruebaChica/sourceCode, /home/cris/pruebaChica/video, /home/cris/pruebaChica/config, /home/cris/pruebaChica/audio, /home/cris/pruebaChica/spreadsheet, /home/cris/pruebaChica/document, /home/cris/pruebaChica/image, /home/cris/pruebaChica/compressed, /home/cris/pruebaChica/executable]}
+Organizada el Thu Dec 26 00:47:03 CLST 2024
+-------------------
+Folder{/home/cris/pruebaChica
+organizada=true
+, organizacion='Type
+, archivos=[/home/cris/pruebaChica/text, /home/cris/pruebaChica/presentation, /home/cris/pruebaChica/sourceCode, /home/cris/pruebaChica/video, /home/cris/pruebaChica/config, /home/cris/pruebaChica/audio, /home/cris/pruebaChica/spreadsheet, /home/cris/pruebaChica/document, /home/cris/pruebaChica/image, /home/cris/pruebaChica/compressed, /home/cris/pruebaChica/executable]}
+Organizada el Thu Dec 26 00:47:04 CLST 2024
+-------------------
+Folder{/home/cris/pruebaChica
+organizada=true
+, organizacion='Type
+, archivos=[/home/cris/pruebaChica/text, /home/cris/pruebaChica/presentation, /home/cris/pruebaChica/sourceCode, /home/cris/pruebaChica/video, /home/cris/pruebaChica/config, /home/cris/pruebaChica/audio, /home/cris/pruebaChica/spreadsheet, /home/cris/pruebaChica/document, /home/cris/pruebaChica/image, /home/cris/pruebaChica/compressed, /home/cris/pruebaChica/executable]}
+Organizada el Thu Dec 26 00:47:07 CLST 2024
+-------------------
