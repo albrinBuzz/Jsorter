@@ -3,6 +3,6 @@ module org.example.organizerfile {
     requires javafx.fxml;
 
 
-    opens org.example.organizerfile to javafx.fxml;
-    exports org.example.organizerfile;
+    opens org.main.organizerfile to javafx.fxml;
+    exports org.main.organizerfile;
 }

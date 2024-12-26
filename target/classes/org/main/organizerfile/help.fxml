@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="446.0" prefWidth="600.0" style="-fx-background-color: #05313d;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.organizerfile.HelpController">
+   <children>
+      <TabPane fx:id="tabHelp" layoutX="33.0" layoutY="26.0" prefHeight="302.0" prefWidth="474.0" style="-fx-background-color: #05313d;" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Acerca">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="207.0" prefWidth="474.0">
+                     <children>
+                        <TextArea editable="false" layoutX="2.0" layoutY="3.0" prefHeight="238.0" prefWidth="474.0" text="Este software es una herramienta diseñada para administrar carpetas&#10;y organizar archivos dentro de ellas según su extensión.&#10;Facilita la organización de archivos al crear subcarpetas que&#10;contienen los archivos organizados según su tipo de extensión.&#10;&#10;El software ofrece tres tipos de organización:&#10;Tipo (Type): Utiliza plantillas predefinidas con extensiones específicas. &#10;Por ejemplo, los archivos PDF se categorizan como documentos y&#10;los archivos de Word de la misma manera, creando una carpeta para&#10;cada categoría.&#10;Por (extensión): Ordena los archivos según el tipo de extensión que tienen.&#10;Personalizado (Custom): Permite al usuario definir sus propias&#10;preferencias de organización." />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Links">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField editable="false" layoutX="63.0" layoutY="39.0" prefHeight="26.0" prefWidth="198.0" text="https://github.com/albrinBuzz" />
+                        <Label layoutX="63.0" layoutY="5.0" style="-fx-text-fill: white;" text="Creditos" />
+                        <TextField editable="false" layoutX="59.0" layoutY="109.0" prefWidth="356.0" text="https://es.wikipedia.org/wiki/Extensi%C3%B3n_de_archivo" />
+                        <Label layoutX="63.0" layoutY="85.0" prefHeight="18.0" prefWidth="294.0" style="-fx-text-fill: white;" text="Que son las extensiones de los archivos" />
+                        <TextField editable="false" layoutX="59.0" layoutY="180.0" text="cris550@gmail.com" />
+                        <Label layoutX="59.0" layoutY="162.0" prefHeight="18.0" prefWidth="218.0" style="-fx-text-fill: white;" text="Sugerencias y reporte de errores" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <TextArea editable="false" layoutX="8.0" layoutY="328.0" prefHeight="248.0" prefWidth="587.0" style="-fx-background-color: #05313d;" text="Copyright © 2024-2024 albrinBuzz&#10;&#10;Este software está sujeto a la Licencia Apache, Versión 2.0 (la &quot;Licencia&quot;);&#10;no puede utilizar este archivo excepto en cumplimiento con la Licencia.&#10;Puede obtener una copia de la Licencia en&#10;&#10;http://www.apache.org/licenses/LICENSE-2.0&#10;&#10;A menos que sea requerido por la ley aplicable o acordado por escrito,el software&#10;se distribuye bajo la Licencia &quot;TAL CUAL&quot;, SIN GARANTÍAS O CONDICIONES DE NINGÚN TIPO,&#10;ya sea expresa o implícita. Consulte la Licencia para el idioma específico que rige&#10;los permisos y limitaciones bajo la Licencia.&#10;&#10;" />
+   </children>
+</AnchorPane>
