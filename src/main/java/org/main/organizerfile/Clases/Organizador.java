@@ -501,8 +501,8 @@ public class Organizador extends HiloAbst{
         switch (num) {
             case 1, 2:
                 // Si el número de operación es 1 o 2, se aplica la organización genérica.
-                //organizarParalelo(carpeta, num);
-                organizarGeneric(carpeta, num);
+                organizarParalelo(carpeta, num);
+                //organizarGeneric(carpeta, num);
                 break;
             case 0:
                 // Si el número de operación es 0, se aplica la organización por extensión.
