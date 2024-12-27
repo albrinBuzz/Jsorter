@@ -1,16 +1,19 @@
 package org.main.organizerfile;
 
+import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import org.main.organizerfile.Clases.Archivos;
@@ -19,6 +22,9 @@ import org.main.organizerfile.Clases.Task;
 import org.main.organizerfile.Clases.TreeTask;
 import org.main.organizerfile.Clases.historial.Archivador;
 import org.main.organizerfile.Clases.historial.Folder;
+import org.main.organizerfile.observer.ProgressObserver;
+import org.main.organizerfile.view.HistoryController;
+import org.main.organizerfile.view.TreeViewController;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,12 +33,14 @@ import java.util.*;
 /**
  * Controlador principal de la aplicación.
  */
-public class HelloController implements Initializable {
+public class MainController implements Initializable, ProgressObserver {
     public TextField textFDirect;
     public ProgressBar barTree;
     public ToggleButton btnTypee;
     public ToggleButton btnExtensionn;
     public ToggleButton btnCustoo;
+    public Pane pnHistorial;
+    public Pane pnTree;
     @FXML
     private Label lblJerarquia;
     @FXML
@@ -45,8 +53,7 @@ public class HelloController implements Initializable {
     private TreeItem<String> rootItem ;
     @FXML
     private ListView<String> listviewCustom;
-    @FXML
-    private ListView<String> listViewHist;
+
     @FXML
     private Label lblTipo;
     @FXML
@@ -82,14 +89,15 @@ public class HelloController implements Initializable {
     private TextArea textADetalle;
     private ObservableList<String> list;
     private ObservableList<String> listCust;
-    private ObservableList<String> listHist;
     private Archivos archivos;
     private Archivador archivador;
     private Task<Organizador> task;
     private Task<TreeTask> task2;
+    private  HistoryController historyController;
+    private TreeViewController treeViewController;
     // Agrega estas líneas al principio de tu clase HelloController:
-// Paleta de colores sugerida
-// Paleta de colores sugerida
+    // Paleta de colores sugerida
+    // Paleta de colores sugerida
     private final String primaryColor = "#1976D2";  // Azul primario oscuro
     private final String secondaryColor = "#FF5722"; // Naranja oscuro
     private final String accentColor = "#FFC107";   // Amarillo de acento
@@ -106,27 +114,31 @@ public class HelloController implements Initializable {
         directoryChooser.setTitle("Seleccionar Directorio");
         File selectedDirectory = directoryChooser.showDialog(btnExtensionn.getScene().getWindow());
         if (selectedDirectory != null) {
-            lblCarp.setText("Carpeta: \n"+selectedDirectory.getName());
-            lblCant.setText("Items: "+(Objects.requireNonNull(selectedDirectory.listFiles()).length));
-            carpeta=selectedDirectory;
-            organizador=new Organizador(archivador,archivos, carpeta.getAbsolutePath());
-            btnOrg.setDisable(false);
-            btnDeshacer.setDisable(false);
-            updateTree();
-            if (archivador.contains(carpeta.getAbsolutePath())){
-                String ordenado= null;
-                try {
-                    ordenado = archivador.ordenado(carpeta.getAbsolutePath())?" si ":"no";
-                    lblOrganizado.setText("Organizado: "+ordenado);
-                } catch (Exception e) {
-                      lblOrganizado.setText("Organizado: No");
-                    //throw new RuntimeException(e);
-                }
-                lblOrganizado.setText("Organizado: "+ordenado);
-            }else lblOrganizado.setText("Organizado: No");
-            lblOrganizado.setStyle("-fx-font-weight: bold; -fx-text-fill:  #ffff00;");
+                setearCarpeta(selectedDirectory);
         }
     }
+    public void setearCarpeta(File selectedDirectory){
+        lblCarp.setText("Carpeta: \n"+selectedDirectory.getName());
+        lblCant.setText("Items: "+(Objects.requireNonNull(selectedDirectory.listFiles()).length));
+        carpeta=selectedDirectory;
+        organizador=new Organizador(archivador,archivos, carpeta.getAbsolutePath(),this);
+        btnOrg.setDisable(false);
+        btnDeshacer.setDisable(false);
+        updateTree();
+        if (archivador.contains(carpeta.getAbsolutePath())){
+            String ordenado= null;
+            try {
+                ordenado = archivador.ordenado(carpeta.getAbsolutePath())?" si ":"no";
+                lblOrganizado.setText("Organizado: "+ordenado);
+            } catch (Exception e) {
+                lblOrganizado.setText("Organizado: No");
+                //throw new RuntimeException(e);
+            }
+            lblOrganizado.setText("Organizado: "+ordenado);
+        }else lblOrganizado.setText("Organizado: No");
+        lblOrganizado.setStyle("-fx-font-weight: bold; -fx-text-fill:  #ffff00;");
+    }
+
     @FXML
    private void organizar(ActionEvent event) {
         organizador.setOrgan(true);
@@ -153,6 +165,7 @@ public class HelloController implements Initializable {
             alert.showAndWait();
             e.printStackTrace();
         }finally {
+            System.out.println("entro?");
             lblOrganizado.setText("Organizado: Si");
             try {
                 lblCant.setText("Items: " + (Objects.requireNonNull(carpeta.listFiles()).length));
@@ -165,11 +178,11 @@ public class HelloController implements Initializable {
         organizador.setTipo(num);
         organizador.setDirecotorio(carpeta);
         organizador.setOrg(type);
-        task=new Task<>(organizador);
-        Thread backgroundThread = new Thread(task);
-        barOrg.progressProperty().bind(task.progressProperty());
-        task.call();
-        actualizarHist();
+        Thread thread = new Thread(organizador);
+        thread.start();
+
+       historyController.actualizarHist();
+
     }
     /**
      * Inicializa el controlador después de que se carga el archivo FXML.
@@ -221,9 +234,22 @@ public class HelloController implements Initializable {
                 oldVal.setSelected(true);
             }
         });
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("history-view.fxml"));
+        try {
+            Pane secondaryLayout = loader.load();
+
+            historyController=loader.getController();
+            historyController.setParentController(this);
+
+            pnHistorial.getChildren().setAll(secondaryLayout);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         archivador=new Archivador();
-        cargarHistorial();
-        listViewHist.setItems(listHist);
+        //cargarHistorial();
+        //listViewHist.setItems(listHist);
         archivos=new Archivos();
         archivos.traerDatos();
         cargarLista();
@@ -252,7 +278,7 @@ public class HelloController implements Initializable {
         });
         list1.get(2).getItems().get(0).setOnAction(event -> {
             Stage stage=new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("help.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("help.fxml"));
             Scene scene = null;
             try {
                 scene = new Scene(fxmlLoader.load());
@@ -269,20 +295,30 @@ public class HelloController implements Initializable {
         });
         cargarListaCustom();
         listviewCustom.setItems(listCust);
-        rootItem = new TreeItem<>("Directorios");
-        treeDirectorio.setRoot(rootItem);
-        treeDirectorio.setStyle("-fx-background-color: #E6E6E6;");
-        treeDirectorio.setEditable(false);
-        // Asignación de colores en el método initialize()
-        treeDirectorio.setStyle("-fx-background-color: " + backgroundColor + ";");
+
+
+        FXMLLoader loaderTree = new FXMLLoader(getClass().getResource("tree-view.fxml"));
+        try {
+            Pane secondaryLayout = loaderTree.load();
+
+            treeViewController=loaderTree.getController();
+            treeViewController.setParentController(this);
+
+            pnTree.getChildren().setAll(secondaryLayout);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
         listviewCustom.setStyle("-fx-background-color: " + backgroundColor + ";");
-        listViewHist.setStyle("-fx-background-color: " + backgroundColor + ";");
+
         lblTipo.setStyle("-fx-font-weight: bold; -fx-text-fill: " + textColor + ";");
         btnDeshacer.setStyle("-fx-background-color: " + primaryColor + "; -fx-text-fill: " + textColor + ";");
         btnAgregarCarpt.setStyle("-fx-background-color: " + primaryColor + "; -fx-text-fill: " + textColor + ";");
         btnOrg.setStyle("-fx-background-color: " + primaryColor + "; -fx-text-fill: " + textColor + ";");
         listviewCustom.setStyle("-fx-background-color: " + backgroundColor + "; -fx-text-fill: " + textColor + ";");
-        listViewHist.setStyle("-fx-background-color: " + backgroundColor + "; -fx-text-fill: " + textColor + ";");
+
     }
     private void agregarExt(){
         String extension = null;
@@ -415,38 +451,20 @@ public class HelloController implements Initializable {
             listCust.add(key+" : "+value);
         }
     }
-    private void cargarHistorial(){
-        listHist = FXCollections.observableArrayList();
-        HashMap<String, Folder> historial=archivador.getCarpetas();
-        for (Map.Entry<String, Folder> entry : historial.entrySet()) {
-            String key=entry.getKey();
-            String value=archivador.getCarpetas().get(key).isOrganizada()?" si ":"no";
-            String organizacion=archivador.getCarpetas().get(key).getOrganizacion();
-            listHist.add(key+" | Organizada: "+value+"\n Tipo Organizacion: "+organizacion);
-        }
-    }
+
     @FXML
     private void actualizar(){
         archivos.traerDatos();
-        cargarListaCustom();
         listviewCustom.setItems(listCust);
     }
-    private void actualizarHist(){
-        archivos.traerDatos();
-        cargarHistorial();
-        listViewHist.setItems(listHist);
-    }
+
     @FXML
     private void deshacer(ActionEvent actionEvent) {
         try {
             organizador.setKey(carpeta.getAbsolutePath());
             organizador.setOrgan(false);
             task=new Task<>(organizador);
-            barOrg.progressProperty().bind(task.progressProperty());
             task.call();
-            DoubleProperty progressProperty = new SimpleDoubleProperty(0.0);
-            barOrg.progressProperty().bind(progressProperty);
-            progressProperty.set(0.0);
         } catch (Exception e) {
             Alert alert =new Alert(Alert.AlertType.WARNING);
             alert.setTitle("ERROR!");
@@ -455,27 +473,32 @@ public class HelloController implements Initializable {
             alert.showAndWait();
             System.out.println(e.getMessage());
         }
-        actualizarHist();
+        historyController.actualizarHist();
+
         lblOrganizado.setText("Organizado: No");
         lblCant.setText("Items: "+(Objects.requireNonNull(carpeta.listFiles()).length));
         updateTree();
         organizador.setOrgan(true);
     }
+
     private void updateTree() {
-        lblJerarquia.setText("Jerarquia de: \n" + carpeta.getName());
-        textFDirect.setText(carpeta.getAbsolutePath());
-        treeDirectorio.getRoot().getChildren().clear();
-        treeDirectorio.setVisible(true);
-        TreeTask treeTask = new TreeTask(carpeta, rootItem, this);
-        task2 = new Task<>(treeTask);
-        barTree.progressProperty().bind(task2.progressProperty());
-        prInd.progressProperty().bind(task2.progressProperty());
-        new Thread(task2).start();
+
+        treeViewController.setearCarpeta(carpeta);
+
     }
     public ProgressBar getBarTree() {
         return barTree;
     }
     public TreeView<String> getTreeDirectorio() {
         return treeDirectorio;
+    }
+
+    @Override
+    public void updateProgres(int progres) {
+        Platform.runLater(() -> {
+            barOrg.setProgress(progres/ 100.0);
+
+        });
+
     }
 }

@@ -1,7 +1,8 @@
 package org.main.organizerfile.Clases;
 
+import javafx.application.Platform;
 import javafx.scene.control.TreeItem;
-import org.main.organizerfile.HelloController;
+import org.main.organizerfile.MainController;
 
 import java.io.File;
 import java.util.Arrays;
@@ -14,7 +15,7 @@ import java.util.Arrays;
 public class TreeTask extends HiloAbst {
     private File directory;
     private TreeItem<String> parentItem;
-    private HelloController controller;
+    private MainController controller;
 
     /**
      * Constructor de la tarea del árbol.
@@ -23,7 +24,7 @@ public class TreeTask extends HiloAbst {
      * @param parentItem  Nodo padre del árbol.
      * @param controller  Controlador de la interfaz.
      */
-    public TreeTask(File directory, TreeItem<String> parentItem, HelloController controller) {
+    public TreeTask(File directory, TreeItem<String> parentItem, MainController controller) {
         this.directory = directory;
         this.parentItem = parentItem;
         this.controller = controller;
@@ -43,7 +44,6 @@ public class TreeTask extends HiloAbst {
         } else {
             double count = 0;
             File[] files = directory.listFiles();
-            System.out.println(Arrays.toString(files));
             if (files != null) {
                 for (File file : files) {
                     //cuenta los archivos de manera recursiva, por cada archivo. para poder
@@ -85,14 +85,14 @@ public class TreeTask extends HiloAbst {
     @Override
     public void run() {
         double tiempo = System.nanoTime();
-        /*total = (int) countFiles(directory);
-        System.out.println("Version  concurrente: "+ ((System.nanoTime() - tiempo) / 1000000) + " milisegundos");
+        total = (int) countFiles(directory);
         addNodes(directory, parentItem);
+        System.out.println("Version concurrente: " + ((System.nanoTime() - tiempo) / 1000000000.0) + " segundos");
         // Actualizar la interfaz de usuario desde el hilo principal
         Platform.runLater(() -> {
             //controller.getBarTree().setProgress(1.0);
             controller.getTreeDirectorio().setVisible(true);
-        });*/
+        });
     }
     @Override
     public int getProgress() {

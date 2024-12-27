@@ -5,4 +5,5 @@ module org.example.organizerfile {
 
     opens org.main.organizerfile to javafx.fxml;
     exports org.main.organizerfile;
+    exports org.main.organizerfile.view;
 }

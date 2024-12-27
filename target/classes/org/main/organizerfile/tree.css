@@ -4,3 +4,48 @@
     -fx-background-color: #4974a5; /* Color de fondo oscuro para las celdas del árbol */
     -fx-text-fill: #FFFFFF; /* Color de texto claro para las celdas del árbol */
 }
+
+/* Estilo general para el TreeView */
+.tree-view {
+    -fx-background-color: #37474F; /* Fondo oscuro para el TreeView */
+    -fx-border-color: #455A64; /* Borde sutil en un tono gris intermedio */
+    -fx-border-width: 1px; /* Ancho del borde */
+    -fx-padding: 10px; /* Espaciado interior */
+    -fx-background-insets: 5px; /* Inset para dar más espacio alrededor */
+}
+
+/* Estilo para las celdas del TreeView */
+.tree-cell {
+    -fx-background-color: #455A64; /* Fondo oscuro para las celdas */
+    -fx-text-fill: #FFFFFF; /* Texto blanco en las celdas */
+    -fx-border-color: #607D8B; /* Borde gris intermedio para las celdas */
+    -fx-border-radius: 5px; /* Bordes redondeados */
+    -fx-padding: 8px; /* Relleno más grande para las celdas */
+    -fx-font-size: 14px; /* Tamaño de fuente legible */
+}
+
+/* Estilo para los nodos de carpeta (por defecto) */
+.tree-cell:filled .tree-item {
+    -fx-background-color: #37474F; /* Fondo más oscuro para las carpetas */
+    -fx-text-fill: #00ccff; /* Texto en azul brillante para las carpetas */
+}
+
+/* Estilo cuando el nodo está seleccionado */
+.tree-cell:selected {
+    -fx-background-color: #00ccff; /* Fondo azul brillante cuando está seleccionado */
+    -fx-text-fill: #37474F; /* Texto oscuro cuando está seleccionado */
+}
+
+/* Estilo de las flechas de los nodos (expansión/collapsado) */
+.tree-cell .arrow {
+    -fx-fill: #00ccff; /* Color azul brillante para las flechas */
+}
+
+/* Barra de progreso estilizada */
+.progress-bar {
+    -fx-accent: #00ccff; /* Barra de progreso azul brillante */
+    -fx-pref-height: 20px; /* Altura de la barra de progreso */
+    -fx-border-radius: 5px; /* Bordes redondeados para la barra de progreso */
+    -fx-background-color: #455A64; /* Fondo más oscuro para la barra */
+}
+

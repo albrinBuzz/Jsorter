@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane prefHeight="456.0" prefWidth="658.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.main.organizerfile.view.TreeViewController">
+   <children>
+      <!-- Título descriptivo -->
+      <Label  fx:id="titleLabel" text="Distribución de Archivos y Directorios" layoutX="20.0" layoutY="10.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #00ccff;" />
+
+      <!-- Descripción breve sobre el TreeView -->
+      <Label  fx:id="descriptionLabel" text="Visualiza la estructura jerárquica de archivos y carpetas dentro de tu sistema." layoutX="20.0" layoutY="40.0" style="-fx-font-size: 12px; -fx-text-fill: #B0BEC5;" />
+
+      <!-- Contenedor para el TreeView y la barra de progreso -->
+      <Pane layoutX="29.0" layoutY="65.0" prefHeight="400.0" prefWidth="615.0">
+         <children>
+            <!-- TreeView para mostrar los archivos -->
+            <TreeView fx:id="treeDirectorio" layoutX="4.0" layoutY="3.0" prefHeight="377.0" prefWidth="573.0" stylesheets="@tree.css"/>
+
+            <!-- Barra de progreso (si es necesario para el estado de carga) -->
+            <ProgressBar layoutX="191.0" layoutY="386.0" prefWidth="200.0" progress="0.0">
+               <style>
+                  -fx-accent: #00ccff; /* Color azul brillante para la barra de progreso */
+               </style>
+            </ProgressBar>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

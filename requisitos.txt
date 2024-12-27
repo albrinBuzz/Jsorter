@@ -1,0 +1,81 @@
+Requisitos para el Programa de Organización Automática de Archivos
+
+Requisitos Funcionales:
+1. Selección de Directorio de Origen:
+   - El usuario debe poder seleccionar o especificar una carpeta o directorio donde se encuentran los archivos que se van a organizar.
+
+2. Parámetros de Organización:
+   - El usuario debe poder definir criterios para organizar los archivos:
+     - Por tipo de archivo.
+     - Por fecha de creación o modificación.
+     - Por tamaño de archivo.
+     - Por nombre de archivo.
+
+3. Visualización y Confirmación de Acciones:
+   - El programa debe mostrar al usuario las acciones que va a realizar antes de mover o cambiar los archivos.
+   - El usuario debe poder confirmar o cancelar la operación antes de que se realice.
+
+4. Automatización de la Organización:
+   - El programa debe organizar los archivos de forma automática según los parámetros elegidos por el usuario, moviendo los archivos a las carpetas correspondientes.
+
+5. Manejo de Archivos Existentes:
+   - Si el archivo ya existe en la carpeta de destino, el programa debe ofrecer varias opciones:
+     - Sobrescribir el archivo.
+     - Renombrar el archivo.
+     - No hacer nada.
+
+6. Operaciones de Recuperación de Archivos:
+   - El usuario debe poder revertir la organización o recuperar los archivos si se comete un error.
+
+7. Registros y Logs:
+   - El programa debe generar un registro de las acciones realizadas (qué archivos se movieron y dónde).
+   - Este log puede guardarse en un archivo de texto o mostrarse en la consola.
+
+8. Interfaz de Usuario:
+   - El programa debe tener una interfaz gráfica de usuario (GUI) o interfaz de línea de comandos (CLI).
+
+9. Notificación al Usuario:
+   - El programa debe notificar al usuario cuando haya finalizado el proceso, ya sea con una alerta, un mensaje en la consola o en la GUI.
+
+10. Organización basada en múltiples parámetros:
+    - El programa debe permitir al usuario elegir más de un criterio de organización al mismo tiempo.
+
+11. Filtrado de archivos:
+    - El usuario puede optar por filtrar archivos según ciertos criterios (por ejemplo, solo mover archivos con una determinada extensión).
+
+12. Organización en subdirectorios:
+    - Los archivos deben poder organizarse en subdirectorios adicionales según las reglas del usuario.
+
+13. Organización por metadatos:
+    - El programa debe ser capaz de organizar archivos según metadatos, como los de imágenes EXIF.
+
+14. Interacción con el sistema operativo:
+    - El programa debe crear, eliminar y renombrar carpetas y archivos según sea necesario.
+
+15. Deshacer cambios:
+    - El programa debe permitir al usuario deshacer las operaciones de organización realizadas.
+
+16. Soporte de formatos de archivo especiales:
+    - El programa debe reconocer y organizar formatos como imágenes, música y documentos.
+
+17. Soporte para archivos comprimidos:
+    - El programa debe poder organizar archivos comprimidos (por ejemplo, .zip, .rar).
+
+18. Rendimiento en grandes cantidades de archivos:
+    - El programa debe ser eficiente al organizar grandes volúmenes de archivos.
+
+Requisitos No Funcionales:
+1. Facilidad de uso:
+    - El programa debe ser fácil de usar, con una interfaz intuitiva y retroalimentación clara.
+
+2. Persistencia de configuración:
+    - El programa debe recordar las preferencias del usuario entre sesiones.
+
+3. Integración con servicios de nube:
+    - El programa podría integrarse con servicios de nube como Google Drive, Dropbox o OneDrive.
+
+4. Desempeño multihilo (opcional):
+    - El programa puede implementarse con procesamiento en paralelo para mejorar el rendimiento.
+
+5. Accesibilidad:
+    - El programa debe ser accesible para personas con discapacidad, como soportar control por teclado y lectura de pantalla.

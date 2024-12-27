@@ -1,15 +1,12 @@
 package org.main.organizerfile.Clases;
 
-import org.main.organizerfile.HelloApplication;
+import org.main.organizerfile.MainApplication;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
 
 public class Main {
-    private static HashMap<String,HashSet<String>> custom;
-    public static void main(String[] args) throws IOException {
-        HelloApplication.main(args);
+public static void main(String[] args) throws IOException {
+        MainApplication.main(args);
         
     }
 

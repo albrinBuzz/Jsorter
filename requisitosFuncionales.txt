@@ -1,0 +1,218 @@
+Requisitos Funcionales Adicionales
+
+1. Soporte para Varios Tipos de Organización al Mismo Tiempo:
+   - El programa debe permitir al usuario combinar múltiples criterios de organización.
+   - Ejemplo: Organizar archivos por tipo y fecha, o por tamaño y nombre al mismo tiempo.
+
+2. Organización de Archivos en Base a Contenido:
+   - El programa debería ser capaz de organizar archivos en función de su contenido, por ejemplo, organizando documentos según el tema (usando análisis de texto).
+   - Ejemplo: Mover documentos que contengan la palabra "presupuesto" a una carpeta llamada "Finanzas".
+
+3. Copiar en Lugar de Mover Archivos:
+   - Permitir al usuario seleccionar si quiere copiar los archivos a las carpetas organizadas en lugar de moverlos.
+   - Opción de hacer una copia de seguridad de los archivos antes de realizar cualquier operación.
+
+4. Uso de Plantillas de Organización:
+   - Ofrecer plantillas predefinidas de organización para diferentes tipos de archivos (imágenes, documentos, música, etc.).
+   - Ejemplo: Plantilla para organizar fotos por fecha o tipo de archivo.
+
+5. Automatización por Programación de Tareas:
+   - Permitir programar tareas de organización automáticamente, como mover archivos en segundo plano a horas específicas.
+   - Ejemplo: Organizar archivos cada 24 horas o cada vez que se agregue un archivo nuevo a una carpeta.
+
+6. Filtrado Avanzado por Atributos del Sistema de Archivos:
+   - Permitir filtrar archivos por atributos del sistema de archivos, como propietario, permisos, fecha de acceso, o tamaño.
+
+7. Organización por Reglas Personalizadas:
+   - Permitir la creación de reglas personalizadas para organizar archivos.
+   - Ejemplo: Renombrar archivos automáticamente o mover archivos que superen un tamaño determinado.
+
+8. Soporte para Archivos Simbólicos y Enlaces:
+   - El programa debería manejar correctamente los enlaces simbólicos y accesos directos, sin mover o modificar archivos apuntados por esos enlaces, a menos que el usuario lo indique explícitamente.
+
+9. Soporte para Archivos Duplicados:
+   - Detectar y gestionar archivos duplicados durante el proceso de organización.
+   - Ejemplo: Eliminar o mover archivos duplicados a una carpeta especial.
+
+10. Compatibilidad con Nombres de Archivos Especiales:
+   - El programa debe manejar nombres de archivo con caracteres no estándar (como acentos, espacios, y caracteres Unicode) sin generar errores.
+
+11. Interfaz de Previsualización de Archivos:
+   - Ofrecer una previsualización de los archivos que se moverán antes de realizar la acción, para que el usuario pueda revisar y confirmar.
+
+12. Notificaciones y Alertas del Proceso:
+   - El programa debe notificar al usuario durante el proceso de organización con una barra de progreso, mensajes de estado y alertas de errores.
+
+13. Historial de Operaciones Realizadas:
+   - Mantener un historial detallado de todas las operaciones realizadas, como archivos movidos o renombrados.
+   - Permitir revertir algunas operaciones a partir de este historial.
+
+14. Respaldo y Recuperación de Datos:
+   - Ofrecer la opción de hacer un respaldo de los archivos antes de realizar cambios y permitir la recuperación de los mismos si es necesario.
+
+15. Compatibilidad con Diferentes Dispositivos de Almacenamiento:
+   - El programa debe poder organizar archivos no solo en discos locales, sino también en dispositivos de almacenamiento externos como discos duros, unidades USB o almacenamiento en red.
+
+16. Interfaz para Verificación de Organización:
+   - Permitir al usuario ver una vista previa o explorador de archivos dentro del programa para revisar cómo quedarán organizados los archivos después de aplicar las reglas de organización.
+
+17. Organización por Frecuencia de Uso:
+   - Organizar archivos en base a la frecuencia con que se acceden o modifican. Los archivos que no se han utilizado en mucho tiempo pueden ser movidos a una carpeta de "Archivos Antiguos".
+
+18. Organización de Archivos en la Nube:
+   - Permitir organizar archivos almacenados en servicios de nube como Google Drive, OneDrive, Dropbox, entre otros, usando sus respectivas APIs.
+
+19. Revisión de Archivos Corruptos:
+   - El programa podría tener la capacidad de verificar archivos corruptos antes de organizarlos y notificar al usuario si alguno de ellos no puede ser movido.
+
+20. Soporte para Archivos Multimediales:
+   - El programa debe poder reconocer y organizar archivos multimedia (imágenes, videos, música).
+   - Ejemplo: Organizar imágenes según la fecha EXIF, videos por fecha de grabación, y música por metadatos ID3.
+
+Requisitos Funcionales Adicionales
+
+21. Organización Automática de Archivos de Correo Electrónico:
+   - El programa debe ser capaz de organizar archivos de correo electrónico exportados (por ejemplo, .eml, .pst) en función de los metadatos (fecha, remitente, tema).
+   - Ejemplo: Organizar correos electrónicos en carpetas por año y mes o por remitente.
+
+22. Compatibilidad con Archivos de Bases de Datos:
+   - El programa debe organizar archivos de bases de datos (por ejemplo, .sql, .mdb, .sqlite) y hacer respaldos antes de moverlos.
+   - Ejemplo: Mover bases de datos a un directorio específico y comprimirlas si son grandes.
+
+23. Detección Automática de Archivos Inactivos:
+   - Detectar y organizar archivos inactivos que no han sido modificados en un período de tiempo determinado.
+   - Ejemplo: Archivos no modificados en los últimos 2 años se mueven automáticamente a "Archivo".
+
+24. Soporte para Organización de Archivos por Aplicaciones:
+   - Organizar archivos según la aplicación que los creó (por ejemplo, archivos de Word, Excel, Photoshop).
+   - Ejemplo: Mover archivos .docx a una carpeta de documentos de trabajo o .psd a una carpeta de diseño.
+
+25. Verificación de Redundancia de Archivos:
+   - Verificar la redundancia de archivos para evitar mover o copiar archivos idénticos.
+   - Ejemplo: Si el archivo ya existe en la carpeta de destino, se omite o reemplaza.
+
+26. Integración con APIs de Servicios de Almacenamiento en la Nube:
+   - Integración con servicios de almacenamiento en la nube (Google Drive, OneDrive, Dropbox) para organizar archivos directamente desde la nube.
+   - Ejemplo: Sincronizar y mover archivos desde la nube a carpetas específicas.
+
+27. Control de Versiones de Archivos:
+   - Implementar control de versiones para mantener un historial de versiones de documentos importantes.
+   - Ejemplo: Si un archivo se modifica, generar una copia de la versión anterior y guardarla en una carpeta de "versiones antiguas".
+
+28. Optimización de Espacio en Disco:
+   - Permitir la compresión automática de archivos grandes antes de moverlos.
+   - Ejemplo: Archivos de más de 100 MB se comprimen en formato .zip antes de ser organizados.
+
+29. Manejo de Archivos Temporales:
+   - Detectar y eliminar archivos temporales generados por aplicaciones (por ejemplo, .tmp, .bak, .swp).
+   - Ejemplo: Eliminar o mover archivos temporales a una carpeta de "Archivos Temporales".
+
+30. Filtros de Contenido Específicos:
+   - Permitir crear filtros de contenido para organizar archivos por palabras clave o etiquetas.
+   - Ejemplo: Mover documentos que contengan "presupuesto" a una carpeta de "Finanzas".
+
+31. Búsqueda y Organización de Archivos Duplicados en Nube:
+   - Buscar y organizar archivos duplicados en la nube.
+   - Ejemplo: Detectar duplicados en Google Drive y ofrecer opciones de eliminación o movimiento.
+
+32. Soporte de Archivos Multi-partes:
+   - Organizar archivos divididos en varias partes (por ejemplo, .001, .002, .rar).
+   - Ejemplo: Detectar y juntar las partes automáticamente antes de moverlas.
+
+33. Organización Inteligente por Prioridad:
+   - Organizar archivos según su uso o antigüedad.
+   - Ejemplo: Archivos recientes en la raíz, archivos antiguos en carpetas "Archivados".
+
+34. Previsualización y Comparación de Archivos Antes de la Organización:
+   - Mostrar una vista previa de los archivos antes de moverlos.
+   - Ejemplo: Mostrar miniaturas o contenido de archivos antes de moverlos a nuevas carpetas.
+
+35. Compatibilidad con Archivos Multilingües:
+   - Organizar archivos con nombres y contenido multilingües sin perder información.
+   - Ejemplo: Archivos con caracteres chinos, árabes o cirílicos se organizan correctamente.
+
+36. Soporte para Documentos Firmados Digitalmente:
+   - Organizar documentos firmados digitalmente sin alterar sus metadatos.
+   - Ejemplo: Mover documentos firmados a una carpeta segura.
+
+37. Autenticación y Seguridad:
+   - Requerir autenticación antes de realizar operaciones críticas.
+   - Ejemplo: Sistema de contraseña o autenticación de dos factores (2FA).
+
+38. Interfaz de Línea de Comandos (CLI):
+   - Ofrecer una interfaz de línea de comandos para usuarios avanzados.
+   - Ejemplo: Ejecutar comandos desde la terminal para organizar archivos.
+
+Requisitos Funcionales Adicionales
+
+39. Clasificación Automática de Archivos por Extensión:
+   - El programa debe clasificar automáticamente los archivos en carpetas según su extensión.
+   - Ejemplo: Archivos .txt se mueven a "Documentos de Texto", .jpg a "Imágenes", .mp3 a "Música", etc.
+
+40. Organización por Etiquetas o Metadatos de Archivos:
+   - El programa debe permitir organizar archivos usando etiquetas o metadatos.
+   - Ejemplo: Organizar archivos .pdf según autor, título o palabras clave.
+
+41. Notificaciones en Tiempo Real:
+   - El programa debe enviar notificaciones en tiempo real al completar tareas de organización o si ocurre un error.
+   - Ejemplo: Notificar al usuario cuando una carpeta esté organizada o si hay un error moviendo un archivo.
+
+42. Opción de Deshacer la Organización:
+   - El programa debe ofrecer una opción de deshacer la organización realizada.
+   - Ejemplo: Deshacer los cambios si se movieron archivos a la carpeta equivocada.
+
+43. Verificación de Espacio en Disco Antes de Organizar:
+   - Comprobar el espacio disponible antes de realizar la organización para evitar quedarse sin espacio.
+   - Ejemplo: Notificar al usuario si no hay suficiente espacio en el destino.
+
+44. Organización de Archivos por Propiedades de Imagen:
+   - Organizar imágenes según propiedades visuales como resolución, tamaño o formato de archivo.
+   - Ejemplo: Mover imágenes de alta resolución a una carpeta de calidad superior.
+
+45. Archivos Comprimidos (Zip, Rar, 7z):
+   - El programa debe manejar archivos comprimidos (zip, rar, 7z), descomprimiéndolos antes de organizarlos.
+   - Ejemplo: Si encuentra un archivo .zip, lo descomprime y organiza su contenido.
+
+46. Organización por Frecuencia de Acceso (Últimos Accesos):
+   - Organizar archivos según la frecuencia de acceso, moviendo los más accesados a carpetas principales y los menos accesados a carpetas archivadas.
+   - Ejemplo: Archivos accedidos en los últimos 30 días permanecen en la carpeta principal.
+
+47. Interfaz de Usuario Multilingüe:
+   - Ofrecer la opción de cambiar el idioma de la interfaz.
+   - Ejemplo: Interfaces en inglés, español, francés, alemán, etc.
+
+48. Función de Búsqueda Avanzada de Archivos:
+   - Permitir búsquedas avanzadas con criterios como nombre, fecha de modificación, tipo de archivo, etc.
+   - Ejemplo: Buscar archivos .docx modificados en los últimos 30 días.
+
+49. Filtrar y Organizar Archivos por Tamaño:
+   - Organizar archivos según su tamaño, moviendo archivos pequeños a carpetas específicas y los grandes a otras.
+   - Ejemplo: Archivos menores de 1 MB van a "Documentos pequeños", mayores de 1 GB a "Archivos grandes".
+
+50. Soporte para Archivos Multimediales con Metadatos:
+   - Organizar archivos multimedia (música, video) basándose en metadatos (artista, año, etc.).
+   - Ejemplo: Organizar música según artista y álbum.
+
+51. Organización Inteligente para Archivos de Proyectos:
+   - Organizar archivos de proyectos según etiquetas o categorías.
+   - Ejemplo: Mover archivos de "Proyecto X" a una carpeta específica.
+
+52. Verificación de Archivos de Red:
+   - Comprobar la disponibilidad de la red antes de organizar archivos en ubicaciones compartidas.
+   - Ejemplo: Verificar la conexión a un servidor antes de mover archivos a la red.
+
+53. Acción en Archivos Específicos Según Extensión:
+   - Definir acciones específicas para extensiones de archivos.
+   - Ejemplo: Mover archivos .log a "Logs" sin intervención del usuario.
+
+54. Clasificación de Archivos Según su Propietario:
+   - Organizar archivos según su propietario en un entorno multiusuario.
+   - Ejemplo: Archivos de un usuario se mueven a su propia carpeta.
+
+55. Operación de Archivos en Unidades Remotas:
+   - Permitir la organización de archivos almacenados en unidades remotas o dispositivos de almacenamiento de red.
+   - Ejemplo: Organizar archivos en un disco NAS.
+
+56. Implementación de Reglas de Nombres de Archivos:
+   - Permitir crear reglas personalizadas para renombrar archivos durante la organización.
+   - Ejemplo: Cambiar todos los nombres de archivos a minúsculas o agregar una fecha.

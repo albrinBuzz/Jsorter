@@ -1,22 +1,24 @@
-package org.main.organizerfile;
+package org.main.organizerfile.view;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.main.organizerfile.MainApplication;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class HistoryViewAplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("history-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Organizador");
-        stage.setMinWidth(1102);
-        stage.setMinHeight(660);
-        stage.setMaxWidth(1102);
-        stage.setMaxHeight(660);
+        stage.setMinWidth(670);
+        stage.setMinHeight(400);
+        stage.setMaxWidth(670);
+        stage.setMaxHeight(400);
         stage.setScene(scene);
         stage.show();
     }

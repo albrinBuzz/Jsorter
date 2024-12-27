@@ -1,6 +1,8 @@
 package org.main.organizerfile.Clases;
 
+import javafx.application.Platform;
 import org.main.organizerfile.Clases.historial.Archivador;
+import org.main.organizerfile.observer.ProgressObserver;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,6 +11,7 @@ import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /*
 Clase para organizar archivos en un directorio.
@@ -24,6 +27,10 @@ public class Organizador extends HiloAbst{
     private boolean organ;
     private File direcotorio;
     private String org,key;
+    private ProgressObserver progressObserver;
+    private AtomicInteger progreso;
+    private final Object lock = new Object(); // Objeto para sincronizar el acceso a la barra de progreso
+
     /**
      * Constructor de la clase Organizador.
      * Este constructor crea una instancia de Organizador con los parámetros dados.
@@ -33,12 +40,13 @@ public class Organizador extends HiloAbst{
      * @param key        Clave para operaciones posteriores.
      * Esta clave se utiliza para identificar la operación realizada y permitir su posterior reversión.
      */
-    public Organizador(Archivador archivador,Archivos archivos,String key) {
+    public Organizador(Archivador archivador,Archivos archivos,String key,ProgressObserver  progressObserver) {
         this.archivos =archivos;
         this.archivador=archivador;
         this.key=key;
         slash= FileSystems.getDefault().getSeparator();
         organ=true;
+        this.progressObserver=progressObserver;
     }
     /**
      * Constructor alternativo para Organizador.
@@ -196,43 +204,12 @@ public class Organizador extends HiloAbst{
 
     public void organizarParalelo(File carpeta,int num) throws Exception {
         double tiempo = System.nanoTime();
-
+        progreso=new AtomicInteger(0);
         if (carpeta.isDirectory()){
             File[]archivos=carpeta.listFiles();
-
-            /*Path directorio = Paths.get(carpeta.getAbsolutePath());
-
-            try (Stream<Path> archivosParalelo = Files.walk(directorio,1)) {
-                archivosParalelo.parallel()  // Usamos un stream paralelo
-                        .filter(Files::isRegularFile)  // Filtramos solo archivos (no directorios)
-                        .forEach(file -> {
-                            // Aquí procesas los archivos
-                            //System.out.println(file);
-                            try {
-                                organizar(file.toFile(), num, carpeta);
-                            } catch (Exception e) {
-                                throw new RuntimeException(e);
-                            }
-                        });
-            } catch (IOException e) {
-                e.printStackTrace();
-            }*/
-            setProgress(1);
+            progressObserver.updateProgres(progreso.get());
             int inicio=0;
             int div=archivos.length/4;
-           /*List<File>listaArchivos=  Arrays.asList(carpeta.listFiles());
-           int div=listaArchivos.size()/4;
-           int inicio=0;
-            setTotal(listaArchivos.size());
-            listaArchivos.parallelStream()
-                    .forEach(file -> {
-                        try {
-                            organizar(file, num, carpeta);
-                        } catch (Exception e) {
-                            throw new RuntimeException(e);
-                        }
-                    });*/
-
             ExecutorService service=Executors.newFixedThreadPool(4);
             Runnable[] runnables =new Runnable[4];
             int idx=1;
@@ -249,56 +226,50 @@ public class Organizador extends HiloAbst{
                 runnables[i]=runnable;
                 inicio+=div;
                 idx++;
-
             }
-
-            /*Runnable runnable1=() -> {
-                try {
-                    organizador(archivos, num, carpeta, 0, div);
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-            };
-            Runnable runnable2=() -> {
-                try {
-                    organizador(archivos, num, carpeta, div, div*2);
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-            };
-            Runnable runnable3=() -> {
-                try {
-                    organizador(archivos, num, carpeta, div*2, div*3);
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-            };
-            Runnable runnable4=() -> {
-                try {
-                    organizador(archivos, num, carpeta, div*3, div*4);
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-            };*/
-
             for (int i = 0; i < runnables.length; i++) {
                 service.submit(runnables[i]);
             }
-
-            /*service.submit(runnable1);
-            service.submit(runnable2);
-            service.submit(runnable3);
-            service.submit(runnable4);*/
             service.shutdown();
             service.awaitTermination(30, TimeUnit.SECONDS);
-
-
         }
-
         System.out.println("Version concurrente: " + ((System.nanoTime() - tiempo) / 1000000000.0) + " segundos");
 
         archivador.setOrganizado(carpeta.getAbsolutePath());
         archivador.crearLog(carpeta.getAbsolutePath());
+    }
+
+    private void organizador(File[] archivos, int num, File carpeta, int idxMin, int idxMax) throws Exception {
+        int progresoInt = 0;
+        for (int i = idxMin; i < idxMax; i++) {
+            var archivo = archivos[i];
+            String type;
+            if (archivo.isFile()) {
+                // Lógica para organizar archivos (mover, agregar, etc.)
+
+                String extension = getExtension(archivo.getAbsolutePath());
+                type = this.archivos.contains(extension, num);
+                String dest = setDirectorio(archivo.getAbsolutePath(), type);
+                moveFile(archivo.getAbsolutePath(), dest);
+                archivador.agregarArchivos(new File(dest), carpeta.getAbsolutePath());
+                progreso.getAndIncrement();
+
+            }
+            else if (archivo.isDirectory()) {
+                // Lógica para mover directorios
+
+                String dest = setDirectorio(archivo.getAbsolutePath(), "folder");
+                moveFile(archivo.getAbsolutePath(), dest);
+                archivador.agregarArchivos(new File(dest), carpeta.getAbsolutePath());
+                progreso.getAndIncrement();
+
+
+            }
+        }
+        synchronized (lock) {
+            // Actualización de la barra de progreso
+            Platform.runLater(() -> progressObserver.updateProgres(progreso.get()));
+        }
     }
 
 
@@ -325,34 +296,8 @@ public class Organizador extends HiloAbst{
             progress++;
         }
     }
-    private void organizador(File[]archivos,int num,File carpeta,int idxMin,int idxMax) throws Exception {
 
-        for (int i = idxMin; i < idxMax; i++) {
-            var archivo=archivos[i];
-            String type;
-            if (archivo.isFile()) {
-                //obtiene la extension el archivo, pregunta si existe esa extension en el hashmap
-                //luego obtiene el destino, para luego mover el archivo al destino, y agregar
-                //el directorio al historial
 
-                String extension= getExtension(archivo.getAbsolutePath());
-                type=this.archivos.contains(extension,num);
-                String dest= setDirectorio(archivo.getAbsolutePath(),type);
-                moveFile(archivo.getAbsolutePath(),dest);
-                archivador.agregarArchivos(new File(dest), carpeta.getAbsolutePath());
-                progress++;
-            }
-            else if (archivo.isDirectory()){
-                //mueve los directorios a un directorio llamado folder
-
-                String dest= setDirectorio(archivo.getAbsolutePath(),"folder");
-                moveFile(archivo.getAbsolutePath(),dest);
-                archivador.agregarArchivos(new File(dest), carpeta.getAbsolutePath());
-                progress++;
-            }
-        }
-
-    }
 
     /**
      * Reorganiza archivos.
@@ -479,7 +424,6 @@ public class Organizador extends HiloAbst{
      */
     private void moveFile(String origen,String destino) throws Exception {
         File des=new File(destino);
-        File orig=new File(origen);
         if (des.exists()) {
             Path org = Paths.get(origen);
             Path dest = Paths.get(destino);
@@ -557,8 +501,8 @@ public class Organizador extends HiloAbst{
         switch (num) {
             case 1, 2:
                 // Si el número de operación es 1 o 2, se aplica la organización genérica.
-                organizarParalelo(carpeta, num);
-                //organizarGeneric(carpeta, num);
+                //organizarParalelo(carpeta, num);
+                organizarGeneric(carpeta, num);
                 break;
             case 0:
                 // Si el número de operación es 0, se aplica la organización por extensión.
@@ -626,6 +570,15 @@ public class Organizador extends HiloAbst{
     public void setProgress(int progress) {
         ++this.progress;
     }
+
+    public ProgressObserver getProgressObserver() {
+        return progressObserver;
+    }
+
+    public void setProgressObserver(ProgressObserver progressObserver) {
+        this.progressObserver = progressObserver;
+    }
+
     public void setOrgan(boolean organ) {
         this.organ = organ;
     }

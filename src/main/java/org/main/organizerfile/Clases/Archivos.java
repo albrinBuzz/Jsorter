@@ -13,10 +13,15 @@ public class Archivos {
     private final  HashMap<String, HashSet<String>> type;
     private HashMap<String,HashSet<String>>custom;
     private String slash;
+    private String userHome ;
+    private String config;
     public Archivos() {
         extensiones=new HashMap<>();
         type=new HashMap<>();
         custom=new HashMap<>();
+        userHome= System.getProperty("user.home");
+        slash= FileSystems.getDefault().getSeparator();
+        config=userHome + slash + ".config" + slash + "Jsort";
         traerDatos();
         setType();
         slash= FileSystems.getDefault().getSeparator();
@@ -156,7 +161,9 @@ public class Archivos {
         throw  new IllegalArgumentException("No existe esa categoria");
     }
     public void guardarCustom(){
-        try (ObjectOutputStream objectInputStream= new ObjectOutputStream(new FileOutputStream("./datos.bin"))){{
+        String datos = userHome + slash + ".config" + slash + "Jsort" + slash + "datos.bin";
+
+        try (ObjectOutputStream objectInputStream= new ObjectOutputStream(new FileOutputStream(datos))){{
             objectInputStream.writeObject(custom);
         }} catch (IOException e) {
             throw new RuntimeException(e);
@@ -164,8 +171,10 @@ public class Archivos {
     }
     //@SuppressWarnings("unchecked") //Cambiar y debo comprobar el casteo
     public void traerDatos(){
-        if (new File("./datos.bin").exists()){
-            try (ObjectInputStream objectInputStream=new ObjectInputStream(new FileInputStream("./datos.bin"))){
+        String datos = userHome + slash + ".config" + slash + "Jsort" + slash + "datos.bin";
+        File conf=new File(datos);
+        if (conf.exists()){
+            try (ObjectInputStream objectInputStream=new ObjectInputStream(new FileInputStream(datos))){
 
                 custom = (HashMap<String, HashSet<String>>) objectInputStream.readObject();
 
