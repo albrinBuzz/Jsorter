@@ -7,7 +7,8 @@
 ## Características Principales
 
 - **Organización por Extensión**: Organiza archivos según su tipo de extensión (por ejemplo, imágenes, documentos, música, etc.).
-- **Organización Personalizada**: Permite combinar múltiples criterios de organización, como tipo, fecha, tamaño y nombre de archivo.
+- **Organización Personalizada**: Permite combinar múltiples criterios de organización, como tipo, fecha, tamaño y nombre de archivo
+- las ultimas 3 son bait, y soy uno, cualquier moneita o ayuda bienvenida con el codigo, "Pull request, Issue".
 - **Interfaz Gráfica Intuitiva**: Con una interfaz limpia y fácil de usar, que te permitirá organizar tus archivos rápidamente.
 - **Soporte para Múltiples Tipos de Archivos**: Compatible con una amplia variedad de formatos de archivo.
 
