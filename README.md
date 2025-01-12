@@ -1,6 +1,6 @@
 # Jsort
 
-**Jsort** es una aplicación diseñada para organizar archivos en función de su extensión, contenido, fecha, tamaño y otros criterios definidos por el usuario. Ya sea que quieras organizar tu colección de fotos, documentos o cualquier otro tipo de archivo, **Jsort** te ayuda a mantener tu sistema ordenado y eficiente.
+**Jsort** si,probablemente tienes una carpeta de descargas con cientos de archivos, la cantidad de hentai,o de pdfs de monas xinas, hace incapaz que puedas encotrar el Informe_Financieros_VF_FINAL_FINAL_v3.pdf, pero llego **Jsort** a la salvacion, con un solo click ordenas tu desorden, descargalo ya!!
 
 ![Interfaz de usuario](https://github.com/albrinBuzz/FileOrganizer/assets/152460564/6f68256e-b196-43cc-8377-ca2de684792c)
 
